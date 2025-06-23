@@ -1,9 +1,12 @@
-import React from "react";
-import Register from "./Register";
- // ✅ Correct path after moving file
+import React from 'react';
+import AuthPage from './pages/AuthPage';
 
 function App() {
-  return <Register />;
+  return (
+    <div>
+      <AuthPage />
+    </div>
+  );
 }
 
 export default App;
