@@ -1,10 +1,12 @@
-import React from "react";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Register from './pages/Register';
 
 function App() {
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>✅ StockPilot App is Working!</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<Register />} />
+    </Routes>
   );
 }
 
