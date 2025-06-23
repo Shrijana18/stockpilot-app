@@ -1,5 +1,6 @@
 import React from "react";
-import Register from "./Register"; // ✅ Correct path after moving file
+import Register from "./pages/src/Register";
+ // ✅ Correct path after moving file
 
 function App() {
   return <Register />;
