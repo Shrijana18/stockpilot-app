@@ -1,13 +1,8 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Register from './pages/Register';
+import React from "react";
+import Register from "./Register"; // ✅ Correct path after moving file
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Register />} />
-    </Routes>
-  );
+  return <Register />;
 }
 
 export default App;
