@@ -1,7 +1,8 @@
 // src/components/SignInForm.jsx
 import React, { useState } from 'react';
-import { auth, RecaptchaVerifier } from '../config/firebaseConfig';
-import { signInWithPhoneNumber } from 'firebase/auth';
+import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+import { auth } from '../config/firebaseConfig';
+
 
 export default function SignInForm() {
   const [phone, setPhone] = useState('');
