@@ -16,7 +16,7 @@ const RegisterForm = ({ onSwitchToLogin }) => {
   const generateUserID = () => {
     const timestamp = Date.now().toString(36);
     const randomStr = Math.random().toString(36).substring(2, 8);
-    return `SP-${timestamp}-${randomStr}`;
+    return `SP-${timestamp}_${randomStr}`;
   };
 
   const handleChange = (e) => {
@@ -28,17 +28,17 @@ const RegisterForm = ({ onSwitchToLogin }) => {
     const { email, password, confirmPassword } = formData;
 
     if (password !== confirmPassword) {
-      alert("Passwords do not match!");
+      alert("Passwords do not match");
       return;
     }
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      const userID = generateUserID();
-      alert(`Registered successfully! Your User ID: ${userID}`);
-      // You can store userID + formData in Firestore later here
+      alert("Registered Successfully! 🎉");
+      console.log("User ID:", generateUserID());
     } catch (error) {
-      alert("Registration failed: " + error.message);
+      console.error("Error during registration:", error.message);
+      alert(error.message);
     }
   };
 
@@ -51,11 +51,13 @@ const RegisterForm = ({ onSwitchToLogin }) => {
         <input name="email" type="email" placeholder="Email" onChange={handleChange} required />
         <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
         <input name="confirmPassword" type="password" placeholder="Confirm Password" onChange={handleChange} required />
-        <input name="phone" type="tel" placeholder="Phone Number" onChange={handleChange} required />
+        <input name="phone" placeholder="Phone Number" onChange={handleChange} required />
         <input name="city" placeholder="City / Location" onChange={handleChange} required />
         <button type="submit">Register</button>
       </form>
-      <p>Already have an account? <button onClick={onSwitchToLogin}>Login</button></p>
+      <p>
+        Already have an account? <button onClick={onSwitchToLogin}>Login</button>
+      </p>
     </div>
   );
 };
