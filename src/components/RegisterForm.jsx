@@ -1,4 +1,3 @@
-// src/components/RegisterForm.jsx
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebaseConfig';
@@ -27,47 +26,25 @@ const RegisterForm = ({ onSwitchToLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password, confirmPassword } = formData;
-      if (password !== confirmPassword) {
-    alert("Passwords do not match");
-    return;
-  }
-
-  try {
-    await createUserWithEmailAndPassword(auth, email, password);
-    alert("Registered successfully!");
-    setFormData({
-      businessName: '',
-      ownerName: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-      phone: '',
-      city: '',
-    });
-  } catch (error) {
-    alert("Error registering: " + error.message);
-  }
-};
-
 
     if (password !== confirmPassword) {
-      alert('Passwords do not match!');
+      alert("Passwords do not match!");
       return;
     }
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       const userID = generateUserID();
-      alert(`Registered successfully!\nYour User ID: ${userID}`);
-      // Save user data to DB (coming later)
+      alert(`Registered successfully! Your User ID: ${userID}`);
+      // You can store userID + formData in Firestore later here
     } catch (error) {
-      alert(error.message);
+      alert("Registration failed: " + error.message);
     }
   };
 
   return (
-    <div className="register-form">
-      <h2>Register to StockPilot</h2>
+    <div>
+      <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <input name="businessName" placeholder="Business Name" onChange={handleChange} required />
         <input name="ownerName" placeholder="Owner Name" onChange={handleChange} required />
